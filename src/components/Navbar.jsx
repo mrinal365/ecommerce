@@ -6,7 +6,8 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import {Badge} from '@material-ui/core'
 
 const Container = styled.div`
-    height: 60px;
+    // height: 60px;
+    background: rgba(255,255,255,0.9)
 `
 const Wrapper = styled.div`
   padding: 10px 20px;

@@ -6,8 +6,9 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div>
-      <Navbar />
+    // <div style={{backgroundImage:"url('/assets/bg.png')",backgroundPosition:'center',backgroundSize:'cover',height:'100vh'}}>
+    <div> 
+    {/* <Navbar /> */}
       <Home />
     </div>
   );
