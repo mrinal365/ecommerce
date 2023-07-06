@@ -1,8 +1,21 @@
-import React from 'react'
+import { styled } from "styled-components";
+import { categories } from '../utils/sliderData';
+
+import CategoryItem from "./CategoryItem";
+
+const Container = styled.div`
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+`
 
 function Categories() {
   return (
-    <div>Categories</div>
+    <Container>
+        {categories.map((item)=>(
+            <CategoryItem item={item}/>
+        ))}
+    </Container>
   )
 }
 
