@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import ProductList from './pages/ProductList';
 import Product from './pages/Product';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
     <div>
       {/* <Home /> */}
       {/* <ProductList/> */}
-      <Product/>
+      {/* <Product/> */}
+      <Register/>
+
     </div>
   );
 }
