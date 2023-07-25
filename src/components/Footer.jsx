@@ -3,7 +3,9 @@ import { styled } from "styled-components";
 import {mobile} from '../responsive';
 
 const Container = styled.div`
+    background: #111;
     display: flex;
+    color:white;
     ${mobile({ 
         flexDirection:"column"
       })}
@@ -78,10 +80,10 @@ function Footer() {
             <Logo>Mywhale hub</Logo>
             <Desc>MyWhaleHub is a one stop shop for all all kinds of templates</Desc>
             <SocialContainer>
-                <SocialIcon color="900">
+                <SocialIcon color="000">
                     <Facebook/>
                 </SocialIcon >
-                <SocialIcon color="990000">
+                <SocialIcon color="000">
                     <Instagram/>
                 </SocialIcon>
                 

@@ -9,7 +9,7 @@ import { mobile } from '../responsive';
 
 const Container = styled.div`
     // height: 60px;
-    background: rgba(255,255,255,0.9);
+    background: rgba(0,0,0);
     ${mobile({ 
       padding:"10px 0px"
     })}
@@ -29,13 +29,14 @@ const Left = styled.div`
 const Language = styled.span`
   font-size:14px;
   cursor:pointer;
+  color:#888;
   ${mobile({ 
     display:"none"
   })}
 `
 
 const SearchContainer = styled.div`
-  border: 1px solid lightgrey;
+  border: 1px solid #999999;
   display:flex;
   align-items:center;
   margin-left:25px;
@@ -43,6 +44,9 @@ const SearchContainer = styled.div`
 `
 const Input = styled.input`
   border:none;
+  background:none;
+  color:white;
+  outline:none;
   ${mobile({ 
     width:"50px"
   })}
@@ -55,6 +59,7 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight:bold;
+  color:white;
   ${mobile({ 
     fontSize:"10px",
     marginLeft:14
@@ -74,6 +79,7 @@ const Right = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left:25px;
+  color:#777;
   ${mobile({ 
     fontSize:"8px",
     marginLeft: '10px'
@@ -89,7 +95,7 @@ function Navbar() {
           <Language>EN</Language>
           <SearchContainer>
             <Input/>
-            <Search style={{color:'grey', fontSize:16}}/>
+            <Search style={{color:'#888', fontSize:16}}/>
           </SearchContainer>
         </Left>
         <Center>
