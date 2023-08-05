@@ -3,6 +3,11 @@ import { styled } from "styled-components"
 import Navbar from "../components/Navbar"
 import { Add, Remove } from '@material-ui/icons'
 import { mobile } from '../responsive'
+import { useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { publicRequest } from '../utils/requestMethods'
+import { addProduct } from '../redux/cartRedux'
+import { useDispatch } from 'react-redux'
 
 const Container = styled.div`
 
@@ -119,42 +124,84 @@ const Button = styled.button`
 
 
 function Product() {
+  const location= useLocation()
+  const id = location.pathname.split('/')[2];
+
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [size,setSize] = useState('');
+  const [color, setColor]= useState('');
+
+  const dispatch = useDispatch()
+
+  // fetching product info based on id from param
+  useEffect(()=>{
+    const getProduct = async()=>{
+        try{
+          const res = await publicRequest.get('/product/find/'+id);
+          console.log(res)
+          setProduct(res.data);
+        } catch(err){
+          console.log("err in getProduct", err)
+        }
+    }
+    getProduct()
+  },[id])
+
+  // handle quantity change
+  const handleQuantity = (type) =>{
+      if(type=="dec"){
+        quantity>=2 && setQuantity(quantity-1)
+      }
+      if(type=="inc"){
+        (quantity>=1 && quantity<10) && setQuantity(quantity+1)
+      }
+  }
+  const AddToCart = ()=>{
+    // do it using redux
+    dispatch(addProduct({...product, quantity,color,size}))
+  }
+
   return (
     <Container>
       <Navbar />
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Hey Maddy !!</Title>
-          <Desc>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil sapiente necessitatibus tenetur, quo, quas et culpa aperiam officia dignissimos iure sit voluptas quisquam quos, iste voluptatibus harum. Alias, deleniti rerum?</Desc>
-          <Price>$ 20</Price>
+          <Title>{product.title}</Title>
+          <Desc>
+            {product.desc}
+          </Desc>
+          <Price>${product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
+              {product.color&&product.color.map((itemColor)=>(
+                <FilterColor onClick={()=>setColor(itemColor)} color={itemColor} key={itemColor}/>
+              ))}
+              {/* <FilterColor color='black' />
               <FilterColor color='black' />
-              <FilterColor color='black' />
-              <FilterColor color='black' />
+              <FilterColor color='black' /> */}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>XS</FilterSizeOption>
+              <FilterSize onChange={(e)=>setSize(e.target.value)}>
+                {product.size&&product.size.map((itemSize)=>(
+                  <FilterSizeOption key={itemSize}>{itemSize}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove/>
-              <Amount>1</Amount>
-              <Add/>
+              <Remove onClick={()=>{handleQuantity('dec')}}/>
+              <Amount>{quantity}</Amount>
+              <Add onClick={()=>{handleQuantity('inc')}}/>
             </AmountContainer>
-            <Button>Add to Cart</Button>
+            <Button onClick={AddToCart}>Add to Cart</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

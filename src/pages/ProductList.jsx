@@ -46,12 +46,13 @@ const Option = styled.option`
 `
 
 function ProductList() {
-  const [filters, setFilters] = useState({});
-  const [sort, setSort] = useState("newest");
-
   const location= useLocation()
   // console.log(location.pathname.split('/')[2])
   const cat = location.pathname.split('/')[2];
+  const [filters, setFilters] = useState({});  //  filters = color + size
+  const [sort, setSort] = useState("newest");  
+
+  
   const handleFilters = (e) =>{
     const value = e.target.value;
     setFilters({
@@ -69,36 +70,34 @@ function ProductList() {
     <Container>
       <Navbar />
       <Announcement />
-      <Title>Templates</Title>
+      <Title>Merch</Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Filter Themes: </FilterText>
+          <FilterText>Filter Products: </FilterText>
           <Select name="color" onChange={handleFilters}>
             <Option disabled >
               Color
             </Option>
-            <Option>White</Option>
-            <Option>Blue</Option>
-            <Option>Black</Option>
-            <Option>Green</Option>
-            <Option>Red</Option>
-            <Option>Yellow</Option>
+            <Option>white</Option>
+            <Option>blue</Option>
+            <Option>black</Option>
+            <Option>green</Option>
+            <Option>red</Option>
+            <Option>yellow</Option>
           </Select>
-          <Select name='type' onChange={handleFilters}>
+          <Select name='size' onChange={handleFilters}>
             <Option disabled >
-              Theme
+              Size
             </Option>
-            <Option>Gaming</Option>
-            <Option>MemeCoin</Option>
-            <Option>Metaverse</Option>
-            <Option>ICO</Option>
-            <Option>NFT</Option>
-            <Option>DAO</Option>
+            <Option>M</Option>
+            <Option>S</Option>
+            <Option>L</Option>
+            <Option>XL</Option>
           </Select>
         </Filter>
        
         <Filter>
-          <FilterText>Sort Themes: </FilterText>
+          <FilterText>Sort Products: </FilterText>
           <Select onChange={handleSort}>
             <Option value="asc">Price (low to high)</Option>
             <Option value="desc">Price (high to low)</Option>

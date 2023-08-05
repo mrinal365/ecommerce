@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 //Import Material icons
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import {Badge} from '@material-ui/core'
 
 import { mobile } from '../responsive';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
     // height: 60px;
@@ -88,6 +90,8 @@ const Right = styled.div`
 
 
 function Navbar() {
+  const cart = useSelector((state)=> state.cart)
+  console.log("store", cart)
   return (
     <Container>
       <Wrapper>
@@ -105,8 +109,10 @@ function Navbar() {
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
-            <Badge badgeContent={4} color='primary' >
+            <Badge badgeContent={cart.quantity} color='primary' >
+              <Link to ={`/cart`}>
               <ShoppingCartOutlined/>
+              </Link>
             </Badge>
             {/* <Badge/>  */}
           </MenuItem>
