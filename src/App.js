@@ -13,6 +13,7 @@ import Success from './pages/Success';
 import { useSelector } from 'react-redux';
 
 function App() {
+  // console.log("current user", state.user.currentUser)
   const user = useSelector(state=>state.user.currentUser);
   return (
     // <div style={{backgroundImage:"url('/assets/bg.png')",backgroundPosition:'center',backgroundSize:'cover',objectFit:'cover'}}>
@@ -20,10 +21,18 @@ function App() {
       <BrowserRouter >
         <Routes>
           <Route path="/success" exact element={<Success/>} />
-          <Route path="/" exact element={<Home />} />
-          <Route path="/products/:category" element={<ProductList />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/" exact element={
+                !user ? <Navigate to="/login" /> : <Home />
+          } />
+          <Route path="/products/:category" element={
+              !user ? <Navigate to="/login" /> :<ProductList />
+              } />
+          <Route path="/product/:id" element={
+              !user ? <Navigate to="/login" /> :<Product />
+          } />
+          <Route path="/cart" element={
+              !user ? <Navigate to="/login" /> :<Cart />
+          } />
           <Route
             path="/register"
             element={

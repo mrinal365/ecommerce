@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
+import {BASE_URL} from '../utils/requestMethods'
+
 
 const Container = styled.div``;
 
@@ -173,7 +175,7 @@ const Cart = () => {
     useEffect(() => {
         const makeRequest = async () => {
             try {
-                const res = await axios.post('http://localhost:8001/stripe/payment', {
+                const res = await axios.post(`http://${BASE_URL}/stripe/payment`, {
                     tokenId: stripeToken.id,
                     amount: 2000,
                     stripeToken: stripeToken

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { styled } from "styled-components"
 import { popularProducts } from "../utils/sliderData"
 import Product from "./Product";
-
+import { BASE_URL } from "../utils/requestMethods";
 const Container = styled.div`
     padding: 20px;
     display:flex;
@@ -22,8 +22,8 @@ function Products({ cat, filters, sort }) {
     const getProduct = async () => {
       try {
         const res = await axios.get(
-          cat ? `http://localhost:8001/product/products?category=${cat}`
-            : "http://localhost:8001/product/products"
+          cat ? `http://${BASE_URL}/product/products?category=${cat}`
+            : `http://${BASE_URL}/product/products`
         )
         console.log("prodcuts", res.data)
         setProducts(res.data);

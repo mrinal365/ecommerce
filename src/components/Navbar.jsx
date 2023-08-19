@@ -61,7 +61,8 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight:bold;
-  color:white;
+  color:white !important;
+  text-decoration: none !important;
   ${mobile({ 
     fontSize:"10px",
     marginLeft:14
@@ -103,14 +104,20 @@ function Navbar() {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>MyWhaleHub</Logo>
+        <Link style={{textDecoration: 'none'}} to ={`/`}>
+          <Logo >MyWhaleHub</Logo>
+        </Link>
         </Center>
         <Right>
+        <Link style={{ textDecoration: 'none',color:"white"}} to ={`/register`}>
           <MenuItem>REGISTER</MenuItem>
+        </Link>
+        <Link style={{ textDecoration: 'none',color:"white"}} to ={`/login`}>
           <MenuItem>SIGN IN</MenuItem>
+        </Link>
           <MenuItem>
             <Badge badgeContent={cart.quantity} color='primary' >
-              <Link to ={`/cart`}>
+              <Link style={{ textDecoration: 'none',color:"white"}} to ={`/cart`}>
               <ShoppingCartOutlined/>
               </Link>
             </Badge>
