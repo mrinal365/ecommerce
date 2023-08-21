@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const  BASE_URL = "whalehub.onrender.com";
+export const  BASE_URL = "https://whalehub.onrender.com";
 const TOKEN =""
 // const TOKEN = JSON.parse(JSON.parse(localStorage.getItem('persist:root')).currentUser).accessToken;
 // console.log("---", TOKEN,JSON.parse(localStorage.getItem('persist:root')).currentUser)
