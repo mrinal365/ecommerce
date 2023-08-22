@@ -1,7 +1,9 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons"
 import { styled } from "styled-components"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { sliderItems } from "../utils/sliderData"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { mobile } from '../responsive';
 
@@ -88,8 +90,39 @@ function Slider() {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   }
+
+
+
+  const notifyMe = (element) => {
+    console.log("notify clicked");
+    toast(`🦄 🔔🔔🔔You will be notified for ${element}`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+  });
+    // toast(`🔔🔔🔔You will be notified for ${element}`);
+  }
+
+
   return (
     <Container>
+      <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
       <Arrow direction='left' onClick={() => handleCLick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
@@ -103,7 +136,7 @@ function Slider() {
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
               <div>
-                <Button>Buy</Button>
+                <Button onClick={()=>{notifyMe(item.title.toLowerCase())}}>Notify Me</Button>
               </div>
             </InfoContainer>
           </Slide>

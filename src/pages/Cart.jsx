@@ -175,7 +175,7 @@ const Cart = () => {
     useEffect(() => {
         const makeRequest = async () => {
             try {
-                const res = await axios.post(`http://${BASE_URL}/stripe/payment`, {
+                const res = await axios.post(`${BASE_URL}/stripe/payment`, {
                     tokenId: stripeToken.id,
                     amount: 2000,
                     stripeToken: stripeToken
@@ -208,7 +208,7 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            {cart.products.map((product) => (
+            {(cart.products.length>0)?cart.products.map((product) => (
               <Product>
                 <ProductDetail>
                   <Image src={product.img} />
@@ -234,7 +234,10 @@ const Cart = () => {
                   <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
                 </PriceDetail>
               </Product>
-            ))}
+            )):
+            <div style={{display:'flex',alignItems:'top',paddingTop:"10%",justifyContent:'center',width:'100%',height:'100%',background:''}}>
+              <img style={{height:"30%"}} src="assets/emptycart.png" />  
+            </div>}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

@@ -8,7 +8,8 @@ import { useEffect, useState } from 'react'
 import { publicRequest } from '../utils/requestMethods'
 import { addProduct } from '../redux/cartRedux'
 import { useDispatch } from 'react-redux'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Container = styled.div`
 
 `
@@ -134,6 +135,20 @@ function Product() {
 
   const dispatch = useDispatch()
 
+  const notifyMe = (element) => {
+    console.log("notify clicked");
+    toast(`🦄 Added to Cart`, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+  });
+}
+
   // fetching product info based on id from param
   useEffect(()=>{
     const getProduct = async()=>{
@@ -158,12 +173,25 @@ function Product() {
       }
   }
   const AddToCart = ()=>{
+    notifyMe()
     // do it using redux
     dispatch(addProduct({...product, quantity,color,size}))
   }
 
   return (
     <Container>
+      <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
       <Navbar />
       <Announcement />
       <Wrapper>

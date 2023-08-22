@@ -2,22 +2,22 @@ export const sliderItems = [
     {
       id: 1,
       img: "assets/slide1.jpg",
-      title: "New Template",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      title: "Clearence Sale",
+      desc: "Upto 85% off on various styles, starting 30th December",
       bg: "f5fafd",
     },
     {
       id: 2,
       img: "assets/slide2.jpg",
-      title: "Gaming Arrivals",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      title: "New Arrivals",
+      desc: "New Arrivals with latest styles from Whalehub, with limited amount.",
       bg: "fcf1ed",
     },
     {
       id: 3,
       img: "assets/slide3.jpg",
-      title: "Meme Coin Arrivals",
-      desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+      title: "Festival Season",
+      desc: "Rock this festiv season with whalehub limited edition series.",
       bg: "fbf0f4",
     },
   ];
@@ -38,8 +38,8 @@ export const sliderItems = [
     {
       id: 3,
       img: "assets/cat3.jpg",
-      title: "ACCESSORIES",
-      cat:"accessories "
+      title: "KIDS",
+      cat:"kids "
     },
   ];
 
