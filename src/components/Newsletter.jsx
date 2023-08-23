@@ -55,16 +55,45 @@ const Button = styled.button`
 
 function Newsletter() {
     const [email, setEmail] = useState("")
-    const notifyMe = () => toast('🦄 Thanks for subscribing!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-    });;
+    const notifyMe = () => {
+    if(email.length===0){
+        toast('🦄 Please Enter Email', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        })
+    }
+    else if(email.length>0&&email.length<5){
+        toast('incorrect email', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+    else if(email.length>5){
+        toast('🦄 Thanks for subscribing!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+}
+    
     // useEffect(()=>{
         
     // },[email])
@@ -87,7 +116,7 @@ function Newsletter() {
             <InputContainer>
                 <Input onChange={(e)=>{setEmail(e.target.value)}} type="email" placeholder="Your Email" />
                 <Button>
-                    <Send onClick={() => { email.length>5&&notifyMe() }} />
+                    <Send onClick={() => { notifyMe() }} />
                 </Button>
             </InputContainer>
         </Container>

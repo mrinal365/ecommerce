@@ -65,6 +65,9 @@ function ProductList() {
     setSort(e.target.value)
     console.log("---", sort)
   }
+  const reset=()=>{
+    setFilters({})
+  }
   console.log(filters)
   return (
     <Container>
@@ -94,6 +97,9 @@ function ProductList() {
             <Option>L</Option>
             <Option>XL</Option>
           </Select>
+          <button onClick={reset}>
+            reset filters
+          </button>
         </Filter>
        
         <Filter>

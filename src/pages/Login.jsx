@@ -3,7 +3,7 @@ import {mobile} from "../responsive";
 import {useState} from 'react';
 import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -56,7 +56,7 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const LinkTag = styled.a`
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
@@ -93,9 +93,11 @@ const Login = () => {
             onChange={(e)=>{setPassword(e.target.value)}}
             />
           <Button disabled={isFetching} onClick={handleClick}>LOGIN</Button>
-          {error && <Error>SOmething Went Wrong!!</Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          {error && <Error>Something Went Wrong!!</Error>}
+          {/* <LinkTag>DO NOT YOU REMEMBER THE PASSWORD?</LinkTag> */}
+          {/* <Link style={{textDecoration:'none',color:'black'}} to={'/register'}> */}
+          {/* <LinkTag>CREATE A NEW ACCOUNT</LinkTag> */}
+          {/* </Link> */}
         </Form>
       </Wrapper>
     </Container>

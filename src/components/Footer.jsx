@@ -78,7 +78,7 @@ function Footer() {
     <Container>
         <Left>
             <Logo>Mywhale hub</Logo>
-            <Desc>MyWhaleHub is a one stop shop for all all kinds of templates</Desc>
+            <Desc>MyWhaleHub is a one stop shop for all all kinds of crypto related apparels.</Desc>
             <SocialContainer>
                 <SocialIcon color="000">
                     <Facebook/>
@@ -92,13 +92,13 @@ function Footer() {
         <Center>
             <Title>Useful Links</Title>
             <List>
+                <ListItem>Festiv Sale</ListItem>
+                <ListItem>Clearence Sale</ListItem>
+                {/* <ListItem>Home</ListItem>
                 <ListItem>Home</ListItem>
                 <ListItem>Home</ListItem>
                 <ListItem>Home</ListItem>
-                <ListItem>Home</ListItem>
-                <ListItem>Home</ListItem>
-                <ListItem>Home</ListItem>
-                <ListItem>Home</ListItem>
+                <ListItem>Home</ListItem> */}
             </List>
         </Center>
         <Right>
